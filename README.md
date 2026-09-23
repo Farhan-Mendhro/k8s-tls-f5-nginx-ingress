@@ -4,11 +4,8 @@ A hands-on Kubernetes lab demonstrating TLS termination, automated certificate m
 
 ## Architecture
 
-```
 <img width="1411" height="736" alt="tls-ingress" src="https://github.com/user-attachments/assets/72694abc-2359-49c8-97a5-9417005d87f7" />
 
-
-```
 
 TLS is automated end-to-end via **cert-manager**: a `ClusterIssuer` issues a self-signed certificate, stored as a Kubernetes `Secret`, which the Ingress references directly — no manual `openssl` cert generation or renewal.
 
