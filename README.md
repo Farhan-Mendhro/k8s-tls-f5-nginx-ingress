@@ -5,18 +5,8 @@ A hands-on Kubernetes lab demonstrating TLS termination, automated certificate m
 ## Architecture
 
 ```
-Client
-  │  HTTPS request (lab.devops.local)
-  ▼
-F5 NGINX Ingress Controller
-  │  • Terminates TLS (cert-manager-issued certificate)
-  │  • Enforces HTTP Basic Auth
-  │  • Routes by path: /app1 → svc1, /app2 → svc2
-  ▼
-ClusterIP Services (svc1, svc2)
-  │
-  ▼
-Backend Pods (app1: nginx, app2: httpd)
+<img width="1411" height="736" alt="tls-ingress" src="https://github.com/user-attachments/assets/3a0ee31d-ed56-4c91-9035-10f6d7faa1fd" />
+
 ```
 
 TLS is automated end-to-end via **cert-manager**: a `ClusterIssuer` issues a self-signed certificate, stored as a Kubernetes `Secret`, which the Ingress references directly — no manual `openssl` cert generation or renewal.
