@@ -5,7 +5,8 @@ A hands-on Kubernetes lab demonstrating TLS termination, automated certificate m
 ## Architecture
 
 ```
-<img width="1411" height="736" alt="tls-ingress" src="https://github.com/user-attachments/assets/3a0ee31d-ed56-4c91-9035-10f6d7faa1fd" />
+<img width="1411" height="736" alt="tls-ingress" src="https://github.com/user-attachments/assets/72694abc-2359-49c8-97a5-9417005d87f7" />
+
 
 ```
 
