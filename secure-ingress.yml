@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: secure-ingress
+  annotations:
+    cert-manager.io/cluster-issuer: self-signed-user
+    nginx.org/basic-auth-secret: basic-auth-secret
+    nginx.org/basic-auth-realm: "Authentication Required"
+    nginx.org/rewrites: "serviceName=svc1 rewrite=/;serviceName=svc2 rewrite=/"
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - lab.devops.local
+    secretName: secure-ingress-tls
+  rules:
+  - host: lab.devops.local
+    http:
+      paths:
+      - path: /app1
+        pathType: Prefix
+        backend:
+          service:
+            name: svc1
+            port:
+              number: 80
+      - path: /app2
+        pathType: Prefix
+        backend:
+          service:
+            name: svc2
+            port:
+              number: 80
